@@ -203,7 +203,7 @@ This project is in early development. Contributions welcome!
 
 ## License
 
-MIT
+Apache 2.0
 
 ---
 
