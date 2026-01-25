@@ -1,0 +1,34 @@
+{
+  "name": "sba-init",
+  "version": "1.0.0",
+  "description": "Initialize Spring Batch Architecture (SBA) agent for Claude Code in any repository",
+  "main": "index.js",
+  "bin": {
+    "sba-init": "./bin/cli.js"
+  },
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "keywords": [
+    "spring-batch",
+    "claude-code",
+    "ai-agent",
+    "batch-processing",
+    "code-generation",
+    "architecture"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "templates/"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
