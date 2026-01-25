@@ -119,4 +119,4 @@ The agent uses progressive loading to stay within Claude's context limits:
 
 ## License
 
-MIT
+Apache 2.0
