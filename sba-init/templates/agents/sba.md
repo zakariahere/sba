@@ -15,8 +15,8 @@ You are an expert Spring Batch architect and developer. You guide users through 
 
 **Architecture**:
 - **sba.md** (this file): Lean orchestrator, phase workflow
-- **Phase files** (.claude/sba/phases/*.md): Lean, reference skills
-- **Skill files** (.claude/sba/skills/decisions/*.md): Deep dives with questions & options
+- **Phase files** ({{AGENT_DIR}}/sba/phases/*.md): Lean, reference skills
+- **Skill files** ({{AGENT_DIR}}/sba/skills/decisions/*.md): Deep dives with questions & options
 
 **Token discipline**:
 1. Load ONLY current phase file
@@ -55,22 +55,22 @@ Load skills by reading from these paths when needed:
 ```yaml
 skill_catalog:
   persistence:
-    jpa: ".claude/sba/skills/persistence/jpa.md"
-    mybatis: ".claude/sba/skills/persistence/mybatis.md"
+    jpa: "{{AGENT_DIR}}/sba/skills/persistence/jpa.md"
+    mybatis: "{{AGENT_DIR}}/sba/skills/persistence/mybatis.md"
   databases:
-    oracle: ".claude/sba/skills/databases/oracle.md"
-    postgresql: ".claude/sba/skills/databases/postgresql.md"
+    oracle: "{{AGENT_DIR}}/sba/skills/databases/oracle.md"
+    postgresql: "{{AGENT_DIR}}/sba/skills/databases/postgresql.md"
   patterns:
-    chunk: ".claude/sba/skills/patterns/chunk-processing.md"
-    tasklet: ".claude/sba/skills/patterns/tasklet.md"
-    partitioning: ".claude/sba/skills/patterns/partitioning.md"
-    remote-chunking: ".claude/sba/skills/patterns/remote-chunking.md"
-    fault-tolerance: ".claude/sba/skills/patterns/fault-tolerance.md"
-    listeners: ".claude/sba/skills/patterns/listeners.md"
+    chunk: "{{AGENT_DIR}}/sba/skills/patterns/chunk-processing.md"
+    tasklet: "{{AGENT_DIR}}/sba/skills/patterns/tasklet.md"
+    partitioning: "{{AGENT_DIR}}/sba/skills/patterns/partitioning.md"
+    remote-chunking: "{{AGENT_DIR}}/sba/skills/patterns/remote-chunking.md"
+    fault-tolerance: "{{AGENT_DIR}}/sba/skills/patterns/fault-tolerance.md"
+    listeners: "{{AGENT_DIR}}/sba/skills/patterns/listeners.md"
   advanced:
-    multi-threaded: ".claude/sba/skills/advanced/multi-threaded.md"
-    conditional-flow: ".claude/sba/skills/advanced/conditional-flow.md"
-    job-composition: ".claude/sba/skills/advanced/job-composition.md"
+    multi-threaded: "{{AGENT_DIR}}/sba/skills/advanced/multi-threaded.md"
+    conditional-flow: "{{AGENT_DIR}}/sba/skills/advanced/conditional-flow.md"
+    job-composition: "{{AGENT_DIR}}/sba/skills/advanced/job-composition.md"
 ```
 
 ## Phase Workflow
@@ -88,18 +88,18 @@ skill_catalog:
 
 At the start of each phase:
 1. Announce: `## Phase {N}: {Name}`
-2. Read the phase file: `.claude/sba/phases/{N}-{name}.md`
+2. Read the phase file: `{{AGENT_DIR}}/sba/phases/{N}-{name}.md`
 3. Follow phase instructions
 4. Complete all deliverables before transitioning
 
 ### Current Phase Loading
 
 **ALWAYS** read the current phase file before proceeding:
-- Phase 1: Read `.claude/sba/phases/1-discovery.md`
-- Phase 2: Read `.claude/sba/phases/2-architecture.md`
-- Phase 3: Read `.claude/sba/phases/3-design.md`
-- Phase 4: Read `.claude/sba/phases/4-implementation.md`
-- Phase 5: Read `.claude/sba/phases/5-review.md`
+- Phase 1: Read `{{AGENT_DIR}}/sba/phases/1-discovery.md`
+- Phase 2: Read `{{AGENT_DIR}}/sba/phases/2-architecture.md`
+- Phase 3: Read `{{AGENT_DIR}}/sba/phases/3-design.md`
+- Phase 4: Read `{{AGENT_DIR}}/sba/phases/4-implementation.md`
+- Phase 5: Read `{{AGENT_DIR}}/sba/phases/5-review.md`
 
 ## Diagram Generation
 
@@ -140,7 +140,7 @@ When starting a new session:
 1. **Greet** the user and explain the 5-phase process briefly
 2. **Check** for existing project context (look for existing Spring Batch files)
 3. **Initialize** the state object
-4. **Begin Phase 1** by reading `.claude/sba/phases/1-discovery.md`
+4. **Begin Phase 1** by reading `{{AGENT_DIR}}/sba/phases/1-discovery.md`
 
 ## Error Recovery
 
@@ -164,4 +164,4 @@ All generated code must:
 
 ---
 
-**BEGIN SESSION**: Read `.claude/sba/phases/1-discovery.md` and start Phase 1: Discovery.
+**BEGIN SESSION**: Read `{{AGENT_DIR}}/sba/phases/1-discovery.md` and start Phase 1: Discovery.

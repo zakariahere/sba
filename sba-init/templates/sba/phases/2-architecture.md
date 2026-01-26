@@ -51,7 +51,7 @@
 
 ### Decision 1: ItemReader Strategy
 
-**Skills to Load**: `.claude/sba/skills/decisions/itemreader-strategy.md`
+**Skills to Load**: `{{AGENT_DIR}}/sba/skills/decisions/itemreader-strategy.md`
 
 **Agent Process**:
 1. Load the ItemReader skill file
@@ -77,7 +77,7 @@
 
 ### Decision 2: ItemWriter Strategy
 
-**Skills to Load**: `.claude/sba/skills/decisions/itemwriter-strategy.md`
+**Skills to Load**: `{{AGENT_DIR}}/sba/skills/decisions/itemwriter-strategy.md`
 
 **Agent Process**:
 1. Load the ItemWriter skill file
@@ -104,7 +104,7 @@
 
 ### Decision 3: Fault Tolerance Strategy
 
-**Skills to Load**: `.claude/sba/skills/decisions/fault-tolerance-strategy.md`
+**Skills to Load**: `{{AGENT_DIR}}/sba/skills/decisions/fault-tolerance-strategy.md`
 
 **Agent Process**:
 1. Load the Fault Tolerance skill file
@@ -131,7 +131,7 @@
 
 ### Decision 4: Restartability & Checkpointing
 
-**Skills to Load**: `.claude/sba/skills/decisions/restartability-strategy.md`
+**Skills to Load**: `{{AGENT_DIR}}/sba/skills/decisions/restartability-strategy.md`
 
 **Agent Process**:
 1. Load the Restartability skill file
@@ -345,7 +345,7 @@ dependencies:
 ```
 Once all criteria met:
 → Load selected skills from skill catalog for design phase
-→ Read .claude/sba/phases/3-design.md
+→ Read {{AGENT_DIR}}/sba/phases/3-design.md
 → Begin code generation (DTOs, SQL queries, step configs)
 
 Current Phase State:

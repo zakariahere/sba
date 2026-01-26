@@ -17,10 +17,10 @@
 **EXECUTE NOW**: Load the required skills based on architecture decisions:
 
 ```
-1. Read: .claude/sba/skills/persistence/{tech_stack.persistence}.md
-2. Read: .claude/sba/skills/databases/{tech_stack.database}.md
-3. Read: .claude/sba/skills/patterns/chunk-processing.md (if using chunks)
-4. Read: .claude/sba/skills/patterns/fault-tolerance.md (if needed)
+1. Read: {{AGENT_DIR}}/sba/skills/persistence/{tech_stack.persistence}.md
+2. Read: {{AGENT_DIR}}/sba/skills/databases/{tech_stack.database}.md
+3. Read: {{AGENT_DIR}}/sba/skills/patterns/chunk-processing.md (if using chunks)
+4. Read: {{AGENT_DIR}}/sba/skills/patterns/fault-tolerance.md (if needed)
 ```
 
 Update state: `sba_state.skills_loaded = [loaded_skill_names]`
@@ -260,8 +260,8 @@ batch:
 
 ```
 sba_state.current_phase = 4
-→ Read .claude/sba/phases/4-implementation.md
-→ Load required templates from .claude/sba/templates/
+→ Read {{AGENT_DIR}}/sba/phases/4-implementation.md
+→ Load required templates from {{AGENT_DIR}}/sba/templates/
 ```
 
 ---

@@ -76,7 +76,7 @@ src/test/java/{package}/
 
 ### Step 2: Generate Configuration
 
-**Load**: `.claude/sba/templates/job-config.md`
+**Load**: `{{AGENT_DIR}}/sba/templates/job-config.md`
 
 Generate `{JobName}BatchConfig.java`:
 - Job bean definition
@@ -96,7 +96,7 @@ Based on design, generate:
 
 ### Step 4: Generate Readers
 
-**Load**: `.claude/sba/templates/reader-templates.md`
+**Load**: `{{AGENT_DIR}}/sba/templates/reader-templates.md`
 
 Based on source type:
 - `JdbcCursorItemReader` - For database cursors
@@ -109,7 +109,7 @@ Based on source type:
 
 ### Step 5: Generate Processors
 
-**Load**: `.claude/sba/templates/processor-templates.md`
+**Load**: `{{AGENT_DIR}}/sba/templates/processor-templates.md`
 
 Generate processor with:
 - Input validation
@@ -134,7 +134,7 @@ public CompositeItemProcessor<Input, Output> processor() {
 
 ### Step 6: Generate Writers
 
-**Load**: `.claude/sba/templates/writer-templates.md`
+**Load**: `{{AGENT_DIR}}/sba/templates/writer-templates.md`
 
 Based on target type:
 - `JdbcBatchItemWriter` - For JDBC batch inserts
@@ -199,7 +199,7 @@ batch:
 
 ### Step 9: Generate Tests
 
-**Load**: `.claude/sba/templates/testing-templates.md`
+**Load**: `{{AGENT_DIR}}/sba/templates/testing-templates.md`
 
 Generate:
 1. **Unit tests** for processors
@@ -291,7 +291,7 @@ Phase 5: Review will validate:
 ```
 sba_state.current_phase = 5
 sba_state.artifacts = [generated_files]
-→ Read .claude/sba/phases/5-review.md
+→ Read {{AGENT_DIR}}/sba/phases/5-review.md
 ```
 
 ---
