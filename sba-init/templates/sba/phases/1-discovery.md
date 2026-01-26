@@ -165,7 +165,7 @@ Ready to proceed to Phase 2: Architecture where we'll decide on:
 
 ```
 sba_state.current_phase = 2
-→ Read .claude/sba/phases/2-architecture.md
+→ Read {{AGENT_DIR}}/sba/phases/2-architecture.md
 ```
 
 ---

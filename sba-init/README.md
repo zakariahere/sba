@@ -1,6 +1,8 @@
-# SBA Init - Spring Batch Architecture Agent for Claude Code
+# SBA Init - Spring Batch Architecture Agent for Claude, GitHub Copilot, and more
 
 Initialize the Spring Batch Architecture (SBA) agent in any repository to get expert guidance designing and implementing enterprise-grade Spring Batch applications.
+
+Supports both Claude and GitHub Copilot (or other LLMs) by letting you choose the agent directory: `.claude` or `.github`.
 
 ## Installation & Usage
 
@@ -15,6 +17,10 @@ sba-init
 # Initialize in a specific directory
 npx sba-init ./my-batch-project
 
+# Choose agent type (claude or github)
+npx sba-init --type claude
+npx sba-init --type github
+
 # Force overwrite existing files
 npx sba-init --force
 
@@ -25,7 +31,7 @@ npx sba-init -v
 ## What Gets Created
 
 ```
-.claude/
+.claude/ or .github/
 ├── agents/
 │   └── sba.md                      # Main orchestrator agent
 ├── rules/
@@ -52,12 +58,14 @@ npx sba-init -v
         └── state-schema.md         # State management definition
 ```
 
-## Using the Agent in Claude Code
+## Using the Agent in Claude or GitHub Copilot
 
-After initialization, start Claude Code in your project:
+After initialization, start Claude Code or GitHub Copilot in your project:
 
 ```bash
+# For Claude:
 claude
+# For GitHub Copilot (or other LLMs), open your IDE and use the agent as documented.
 ```
 
 Then invoke the SBA agent in any of these ways:
@@ -106,8 +114,8 @@ Once in an SBA session:
 
 Create new skills by:
 
-1. Add `.md` file in `.claude/sba/skills/{category}/`
-2. Register in skill catalog in `.claude/agents/sba.md`
+1. Add `.md` file in `.claude/sba/skills/{category}/` or `.github/sba/skills/{category}/`
+2. Register in skill catalog in `.claude/agents/sba.md` or `.github/agents/sba.md`
 3. Follow the skill template structure
 
 ## Token Efficiency

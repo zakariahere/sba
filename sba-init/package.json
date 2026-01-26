@@ -1,7 +1,7 @@
 {
   "name": "sba-init",
   "version": "1.0.0",
-  "description": "Initialize Spring Batch Architecture (SBA) agent for Claude Code in any repository",
+  "description": "Initialize Spring Batch Architecture (SBA) agent for Claude, GitHub Copilot, or other LLMs in any repository.",
   "main": "index.js",
   "bin": {
     "sba-init": "./bin/cli.js"
@@ -12,10 +12,13 @@
   "keywords": [
     "spring-batch",
     "claude-code",
+    "github-copilot",
     "ai-agent",
     "batch-processing",
     "code-generation",
-    "architecture"
+    "architecture",
+    "llm",
+    "agent"
   ],
   "author": "",
   "license": "MIT",
