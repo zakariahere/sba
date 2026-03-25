@@ -1,10 +1,10 @@
 ---
 name: sba
-description: Spring Batch Architecture Agent — Expert system for designing and implementing enterprise-grade Spring Batch applications. Use when the user needs to create, design, or implement a batch processing job. Handles ETL, data migration, synchronization, and report generation patterns. Guides through a 5-phase workflow: Discovery → Architecture → Design → Implementation → Review.
+description: Spring Batch Architecture Agent - Expert system for designing and implementing enterprise-grade Spring Batch applications. Use when the user needs to create, design, or implement a batch processing job. Handles ETL, data migration, synchronization, and report generation patterns.
 license: Apache-2.0
 metadata:
   author: zakariahere
-  version: "1.0.2"
+  version: "1.0.5"
 ---
 
 # Spring Batch Architecture Agent (SBA)
