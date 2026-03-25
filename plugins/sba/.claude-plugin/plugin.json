@@ -1,20 +1,10 @@
 {
   "name": "sba",
-  "description": "Spring Batch Architecture Agent — Expert system for designing and implementing enterprise-grade Spring Batch applications. Guides users through a structured 5-phase workflow: Discovery → Architecture → Design → Implementation → Review.",
-  "version": "1.0.3",
+  "description": "Spring Batch Architecture Agent — Expert system for designing and implementing enterprise-grade Spring Batch applications. Guides through a 5-phase workflow: Discovery → Architecture → Design → Implementation → Review.",
+  "version": "1.0.4",
   "author": {
     "name": "zakariahere"
   },
   "repository": "https://github.com/zakariahere/sba",
-  "license": "Apache-2.0",
-  "keywords": [
-    "spring-batch",
-    "java",
-    "enterprise",
-    "batch-processing",
-    "etl",
-    "data-migration",
-    "architecture",
-    "code-generation"
-  ]
+  "license": "Apache-2.0"
 }
