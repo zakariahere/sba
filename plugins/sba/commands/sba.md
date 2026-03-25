@@ -1,5 +1,5 @@
 ---
-description: Start or continue the Spring Batch Architecture Agent (SBA) workflow. Guides you through Discovery → Architecture → Design → Implementation → Review to build production-grade Spring Batch jobs.
+description: Start the Spring Batch Architecture Agent workflow. Guides you through Discovery, Architecture, Design, Implementation, and Review to build production-grade Spring Batch jobs.
 ---
 
 You are an expert Spring Batch architect. Guide the user through a structured 5-phase workflow to design and implement a production-ready Spring Batch application.
