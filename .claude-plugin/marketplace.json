@@ -11,9 +11,9 @@
   "plugins": [
     {
       "name": "sba",
-      "source": "./.claude-plugin",
+      "source": "./plugins/sba",
       "description": "Expert system for designing and implementing enterprise-grade Spring Batch applications. Guides through a 5-phase workflow: Discovery → Architecture → Design → Implementation → Review.",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "author": {
         "name": "zakariahere"
       },
