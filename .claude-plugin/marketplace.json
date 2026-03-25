@@ -1,0 +1,35 @@
+{
+  "name": "sba-marketplace",
+  "owner": {
+    "name": "zakariahere"
+  },
+  "metadata": {
+    "description": "Spring Batch Architecture Agent — plugin marketplace for Claude Code",
+    "version": "1.0.0",
+    "pluginRoot": "."
+  },
+  "plugins": [
+    {
+      "name": "sba",
+      "source": ".",
+      "description": "Expert system for designing and implementing enterprise-grade Spring Batch applications. Guides through a 5-phase workflow: Discovery → Architecture → Design → Implementation → Review.",
+      "version": "1.0.0",
+      "author": {
+        "name": "zakariahere"
+      },
+      "repository": "https://github.com/zakariahere/sba",
+      "license": "Apache-2.0",
+      "keywords": [
+        "spring-batch",
+        "java",
+        "enterprise",
+        "batch-processing",
+        "etl",
+        "data-migration",
+        "architecture"
+      ],
+      "category": "development",
+      "tags": ["spring", "java", "batch", "enterprise", "architecture"]
+    }
+  ]
+}
