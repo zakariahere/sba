@@ -48,7 +48,7 @@ Designing Spring Batch applications involves countless decisions:
 
 ```bash
 # 1. Register the marketplace
-/plugin marketplace add github:zakariahere/springbatch-sba
+/plugin marketplace add zakariahere/sba
 
 # 2. Install the plugin
 /plugin install sba@sba-marketplace
