@@ -6,12 +6,12 @@
   "metadata": {
     "description": "Spring Batch Architecture Agent — plugin marketplace for Claude Code",
     "version": "1.0.0",
-    "pluginRoot": "."
+    "pluginRoot": "./.claude-plugin"
   },
   "plugins": [
     {
       "name": "sba",
-      "source": ".",
+      "source": "./.claude-plugin",
       "description": "Expert system for designing and implementing enterprise-grade Spring Batch applications. Guides through a 5-phase workflow: Discovery → Architecture → Design → Implementation → Review.",
       "version": "1.0.0",
       "author": {
