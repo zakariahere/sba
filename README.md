@@ -2,7 +2,7 @@
 
 > **⚠️ WORK IN PROGRESS**: This project is actively being developed. APIs, file structures, and patterns may change.
 
-A powerful AI agent system for [Claude Code](https://claude.ai/code) that guides you through designing and implementing enterprise-grade Spring Batch applications.
+A Claude Code plugin that guides you through designing and implementing enterprise-grade Spring Batch applications.
 
 ## Why SBA?
 
@@ -24,8 +24,6 @@ Designing Spring Batch applications involves countless decisions:
 
 ## The 5-Phase Workflow
 
-SBA guides you through a structured process:
-
 ```
 ┌─────────────┐     ┌──────────────┐     ┌──────────┐     ┌────────────────┐     ┌──────────┐
 │  Discovery  │ ──▶ │ Architecture │ ──▶ │  Design  │ ──▶ │ Implementation │ ──▶ │  Review  │
@@ -39,31 +37,97 @@ SBA guides you through a structured process:
 | Phase | What Happens | Output |
 |-------|--------------|--------|
 | **Discovery** | Understand business requirements, data sources, volumes, constraints | Project context |
-| **Architecture** | Choose patterns, persistence layer, parallelization strategy | ADRs, tech stack |
+| **Architecture** | Choose patterns, persistence layer, parallelization strategy | 8 ADRs, tech stack |
 | **Design** | Detail data models, step configurations, error handling | Design document |
 | **Implementation** | Generate job configs, readers, processors, writers, tests | Production code |
 | **Review** | Validate against best practices, optimize performance | Final solution |
 
+## Installation
+
+### Claude Code — Plugin (Recommended)
+
+```bash
+# 1. Register the marketplace
+/plugin marketplace add github:zakariahere/springbatch-sba
+
+# 2. Install the plugin
+/plugin install sba@sba-marketplace
+```
+
+Once installed, Claude automatically invokes the SBA agent when you mention Spring Batch. You can also trigger it explicitly:
+
+```
+/sba:sba migrate customer data from Oracle to PostgreSQL
+```
+
+### Other Editors — NPM Package
+
+For GitHub Copilot, Cursor, and other LLM-enabled editors:
+
+```bash
+# In your Spring Batch project directory
+npx sba-init
+
+# For GitHub Copilot
+npx sba-init --type github
+
+# For Cursor
+npx sba-init --type cursor
+```
+
+### Manual Copy
+
+Copy the `.claude/` directory from this repository into your project.
+
+## Usage
+
+### With the Plugin (Claude Code)
+
+After installing the plugin:
+
+1. **Natural language** — *"Help me design a Spring Batch job for customer data migration"*
+2. **Slash command** — `/sba:sba [optional description]`
+3. **Agent panel** — `/agents` → select `sba`
+
+### With sba-init (Other Editors)
+
+1. Run `npx sba-init` in your project directory
+2. Open your editor and invoke the SBA agent
+3. Say: *"Use the sba agent to help me design a Spring Batch job"*
+
+### Quick Commands
+
+During an SBA session:
+
+```
+sba status           Show current state and phase
+sba next             Move to next phase
+sba back             Return to previous phase
+sba skip to {phase}  Jump to a specific phase
+sba load skill {name} Load a specific skill
+sba generate {artifact} Generate a specific artifact
+```
+
 ## Token-Efficient Design
 
-Claude Code has context limits (64k-128k tokens). SBA uses **progressive loading**:
+Claude Code has context limits. SBA uses **progressive loading**:
 
-- Only the current phase is loaded (~4-15k tokens)
+- Only the current phase is loaded (~4–15k tokens per phase)
 - Skills are loaded on-demand based on your tech choices
 - Templates are loaded just-in-time during implementation
 
-This keeps the agent responsive and focused while having access to comprehensive knowledge.
+This keeps the agent responsive and focused while having access to a comprehensive knowledge base.
 
 ## Supported Technologies
 
 ### Persistence Layers
-- **JPA/Hibernate** - With batch optimization patterns
-- **MyBatis** - XML and annotation-based mappers
-- **JDBC** - Direct JDBC with cursor and paging readers
+- **JDBC** — Direct cursor and paging readers, batch inserts (recommended for large volumes)
+- **MyBatis** — XML and annotation-based mappers
+- **JPA/Hibernate** — With batch optimization patterns
 
 ### Databases
-- **PostgreSQL** - With specific optimizations
-- **Oracle** - Including partitioning and hints
+- **PostgreSQL** — With specific optimizations (COPY, advisory locks)
+- **Oracle** — Including partitioning and parallel hints
 - *(MySQL, SQL Server coming soon)*
 
 ### Patterns & Skills
@@ -76,87 +140,58 @@ This keeps the agent responsive and focused while having access to comprehensive
 - Job composition
 - Listeners and monitoring
 
-## Installation
-
-### Option 1: NPM Package (Recommended)
-
-```bash
-# In your Spring Batch project directory
-npx sba-init
-
-# Or with options
-npx sba-init --force --verbose
-```
-
-### Option 2: Manual Copy
-
-Copy the `.claude/` directory from this repository into your project.
-
-## Usage
-
-1. **Start Claude Code** in your project directory:
-   ```bash
-   claude
-   ```
-
-2. **Invoke the SBA agent** in any of these ways:
-   - Natural: *"Help me design a Spring Batch job for customer data migration"*
-   - Explicit: *"Use the sba agent to create an ETL batch job"*
-   - Command: `/agents` → select `sba`
-
-3. **Follow the phases**. The agent will guide you through discovery, architecture, design, implementation, and review.
-
-### Quick Commands
-
-During an SBA session:
-- `sba status` - Show current state and phase
-- `sba next` - Move to next phase
-- `sba back` - Return to previous phase
-- `sba load skill {name}` - Load a specific skill
-
-## Project Structure
+## Plugin Structure
 
 ```
-.claude/
-├── agents/
-│   └── sba.md                      # Main orchestrator agent
-├── rules/
-│   └── sba-conventions.md          # Project conventions
-└── sba/
-    ├── phases/                     # Phase-specific instructions
-    │   ├── 1-discovery.md
-    │   ├── 2-architecture.md
-    │   ├── 3-design.md
-    │   ├── 4-implementation.md
-    │   └── 5-review.md
-    ├── skills/                     # Technology-specific knowledge
-    │   ├── persistence/            # JPA, MyBatis patterns
-    │   ├── databases/              # PostgreSQL, Oracle optimizations
-    │   ├── patterns/               # Chunk, partitioning, fault tolerance
-    │   └── advanced/               # Multi-threaded, conditional flows
-    ├── templates/                  # Code generation templates
-    │   ├── job-config.md
-    │   ├── reader-templates.md
-    │   ├── processor-templates.md
-    │   ├── writer-templates.md
-    │   └── testing-templates.md
-    └── context/
-        └── state-schema.md         # Session state definition
+.claude-plugin/
+├── plugin.json              # Plugin manifest
+└── marketplace.json         # Marketplace catalog
 
-sba-init/                           # NPM package for easy installation
+agents/
+└── sba.md                   # Main orchestrator agent (auto-invoked by Claude)
+
+commands/
+└── sba.md                   # /sba:sba slash command
+
+rules/
+└── sba-conventions.md       # Naming and code conventions
+
+references/                  # Knowledge base (loaded on-demand)
+├── context/
+│   └── state-schema.md      # Session state definition
+├── phases/                  # Phase-specific instructions
+│   ├── 1-discovery.md
+│   ├── 2-architecture.md
+│   ├── 3-design.md
+│   ├── 4-implementation.md
+│   └── 5-review.md
+├── skills/                  # Technology-specific knowledge
+│   ├── persistence/         # JPA, MyBatis patterns
+│   ├── databases/           # PostgreSQL, Oracle optimizations
+│   ├── patterns/            # Chunk, partitioning, fault tolerance
+│   ├── decisions/           # ADR decision frameworks
+│   └── advanced/            # Multi-threaded, conditional flows
+└── templates/               # Code generation templates
+    ├── job-config.md
+    ├── reader-templates.md
+    ├── processor-templates.md
+    ├── writer-templates.md
+    └── testing-templates.md
+
+sba-init/                    # NPM package for non-Claude-Code editors
 ├── package.json
 ├── bin/cli.js
 ├── lib/init.js
-└── templates/                      # Copy of .claude/ for distribution
+└── templates/               # Copy of knowledge base for distribution
 ```
 
 ## Extending SBA
 
 ### Adding New Skills
 
-1. Create a new `.md` file in the appropriate `.claude/sba/skills/` subdirectory
+1. Create a new `.md` file in `references/skills/<category>/`
 2. Follow the skill template structure (overview, patterns, code examples, pitfalls)
-3. Register the skill in the catalog in `.claude/agents/sba.md`
+3. Register the skill path in the catalog inside `agents/sba.md`
 
 ### Skill Template Structure
 
@@ -197,8 +232,8 @@ What to avoid
 This project is in early development. Contributions welcome!
 
 1. Fork the repository
-2. Create a feature branch
-3. Add your skill/pattern/improvement
+2. Create a feature branch (`feature/batch-<topic>`)
+3. Add your skill, pattern, or improvement
 4. Submit a pull request
 
 ## License

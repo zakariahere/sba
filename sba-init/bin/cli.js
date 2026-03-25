@@ -39,28 +39,37 @@ Options:
   -f, --force         Overwrite existing files
   -v, --verbose       Show detailed output
   -h, --help          Show this help message
+  --type <type>       Agent format: claude (default) | github | cursor
+
+╔═══════════════════════════════════════════════════════════════════╗
+║  Claude Code users: install as a plugin instead (recommended)     ║
+║                                                                   ║
+║  /plugin marketplace add github:zakariahere/springbatch-sba       ║
+║  /plugin install sba@sba-marketplace                              ║
+╚═══════════════════════════════════════════════════════════════════╝
 
 Examples:
-  sba-init                    Initialize in current directory
-  sba-init ./my-project       Initialize in ./my-project
-  sba-init . --force          Overwrite existing SBA files
+  sba-init                           Initialize in current directory
+  sba-init ./my-project              Initialize in ./my-project
+  sba-init . --force                 Overwrite existing SBA files
+  sba-init . --type github           Install for GitHub Copilot
+  sba-init . --type cursor           Install for Cursor
 
-What this creates:
-  .claude/
-  ├── agents/sba.md           Main orchestrator agent
-  ├── rules/sba-conventions.md  Project conventions
+What this creates (for non-Claude-Code editors):
+  .claude/   (or .github/, .cursor/ depending on --type)
+  ├── agents/sba.md              Main orchestrator agent
+  ├── rules/sba-conventions.md   Project conventions
   └── sba/
-      ├── phases/             5 workflow phases
-      ├── skills/             Technology-specific skills
-      ├── templates/          Code generation templates
-      └── context/            State management
+      ├── phases/                5 workflow phases
+      ├── skills/                Technology-specific skills
+      ├── templates/             Code generation templates
+      └── context/               State management
 
-After installation, use in Claude Code:
-  - Say "I need to create a Spring Batch job"
-  - Or explicitly: "Use the sba agent"
-  - Or run: /agents and select SBA
+After installation, start the workflow:
+  - Say: "I need to create a Spring Batch job"
+  - Or invoke the agent directly in your editor
 
-Learn more: https://github.com/your-repo/sba-init
+Learn more: https://github.com/zakariahere/springbatch-sba
 `);
   process.exit(0);
 }
@@ -81,7 +90,7 @@ initSBA(resolvedTarget, options)
 📁 Created ${result.filesCreated} files in: ${resolvedTarget}/.${options.type}/
 
 🚀 Next steps:
-   1. Open Claude Code or GitHub Copilot in this directory
+   1. Open your editor in this directory
    2. Say: "I need to design a Spring Batch job"
    3. Or explicitly: "Use the sba agent to help me"
    4. Or run: /agents and select "sba"
@@ -92,6 +101,10 @@ initSBA(resolvedTarget, options)
 💡 Quick commands once in SBA:
    sba status    - Show current phase
    sba next      - Move to next phase
+
+💡 Claude Code users: for the best experience, install as a plugin:
+   /plugin marketplace add github:zakariahere/springbatch-sba
+   /plugin install sba@sba-marketplace
 `);
   })
   .catch((error) => {

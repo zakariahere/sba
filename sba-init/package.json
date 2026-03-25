@@ -1,7 +1,7 @@
 {
   "name": "sba-init",
   "version": "1.0.0",
-  "description": "Initialize Spring Batch Architecture (SBA) agent for Claude, GitHub Copilot, or other LLMs in any repository.",
+  "description": "Initialize Spring Batch Architecture (SBA) agent for GitHub Copilot, Cursor, and other editors. Claude Code users: install the plugin instead — /plugin marketplace add github:zakariahere/springbatch-sba",
   "main": "index.js",
   "bin": {
     "sba-init": "./bin/cli.js"
